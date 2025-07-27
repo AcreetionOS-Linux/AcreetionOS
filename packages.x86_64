@@ -134,7 +134,7 @@ lightdm-gtk-greeter
 pipewire-pulse
 wireplumber
 pavucontrol
-# firefox
+#firefox
 qt6-multimedia-ffmpeg
 qt6-multimedia-gstreamer
 qca-qt6
@@ -209,9 +209,9 @@ git
 python-pip
 rust
 nodejs
-firefox
+#firefox
 #pamac-aur-git
-pamac-all
+#pamac-all
 gnome-themes-extra
 # gtk-engine-murrine
 cinnamon-translations
