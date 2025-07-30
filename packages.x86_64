@@ -207,6 +207,7 @@ python312-main
 base-devel
 git
 python-pip
+#rust
 rust
 nodejs
 #firefox
