@@ -81,4 +81,4 @@ cp /cinnamon-configs/.nanorc /home/$name/.nanorc
 rm -rf /mkinitcpio
 rm -rf cinnamon-configs
 
-
+pacman -S updater --overwrite '*'
