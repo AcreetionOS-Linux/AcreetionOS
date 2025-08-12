@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-#ln -sf /usr/bin/bash /bin/bash 2>/dev/null || true
-#ln -sf /usr/bin/bash /bin/sh 2>/dev/null || true
-
 ##############################################################################
 #
 #  PostInstall is free software; you can redistribute it and/or modify
@@ -17,71 +14,56 @@
 #
 ##############################################################################
 
- name=$(ls -1 /home)
-# REAL_NAME=/home/$name
+echo "Starting AcreetionOS post-installation configuration..."
 
-# genfstab -U / > /etc/fstab
+name=$(ls -1 /home)
+echo "Configuring system for user: $name"
 
-#cp /cinnamon-configs/cinnamon-stuff/bin/* /bin/
-#cp /cinnamon-configs/cinnamon-stuff/usr/bin/* /usr/bin/
-#cp -r /cinnamon-configs/cinnamon-stuff/usr/share/* /usr/share/
-
+echo "Creating user configuration directories..."
 mkdir -p /home/$name/.config
 mkdir -p /home/$name/.config/nemo
 mkdir -p /home/$name/.local/share/cinnamon/extensions
 
-#cp -r /cinnamon-configs/cinnamon-stuff/extensions/* /home/$name/.local/share/cinnamon/extensions
-
-#cp -r /cinnamon-configs/cinnamon-stuff/nemo/* /home/$name/.config/nemo
-
+echo "Copying Cinnamon desktop configuration..."
 cp -r /cinnamon-configs/cinnamon-stuff/.config/* /home/$name/.config/
 
+echo "Setting up autostart applications..."
 mkdir -p /home/$name/.config/autostart
-
 cp -r /cinnamon-configs/dd.desktop /home/$name/.config/autostart
 
+echo "Setting file ownership for user configuration..."
 chown -R $name:$name /home/$name/.config
 chown -R $name:$name /middle.png
-#mv /middle.png /home/$USER
 
+echo "Copying shell and system configuration files..."
 cp -r /cinnamon-configs/.bashrc /home/$name/.bashrc
 cp -r /cinnamon-configs/.bashrc /root
 cp -r /cinnamon-configs/AcreetionOS.txt /root
 cp -r /cinnamon-configs/AcreetionOS.txt /home/$name/AcreetionOS.txt
 
+echo "Configuring system DNS and file attributes..."
 mv /resolv.conf /etc/resolv.conf
 chattr +i /etc/resolv.conf
 chattr +i /etc/os-release
 
-# create python fix!
-
-#mkdir -p /usr/lib/python3.13/site-packages/six
-#touch /usr/lib/python3.13/site-packages/six/__init__.py
-#cp /usr/lib/python3.12/site-packages/six.py /usr/lib/python3.13/site-packages/six/six.py
-
-# cp /archiso.conf /etc/mkinitcpio.conf.d/archiso.conf
-
-# mkdir /home/$name/.local/share/cinnamon
-
-# cp -r /cinnamon-configs/cinnamon-stuff/extensions /home/$name/.local/share/cinnamon/
-
+echo "Copying AcreetionOS documentation..."
 cp /cinnamon-configs/AcreetionOS.txt /home/$name/
 
+echo "Setting up system backgrounds..."
 mkdir -p /usr/share/backgrounds
 cp -r /backgrounds /usr/share/backgrounds
 rm -rf /backgrounds
 
-#chsh -s /bin/bash root
-
+echo "Configuring sudo password feedback..."
 echo "Defaults pwfeedback" | sudo EDITOR='tee -a' visudo >/dev/null 2>&1
 
-#cp -r /cinnamon-configs/spices/* /home/$name/.config/cinnamon/spices/
-#cp /etc/pacman2.conf /etc/pacman.conf
+echo "Updating system configuration files..."
 cp /mkinitcpio/mkinitcpio.conf /etc/mkinitcpio.conf
 cp /mkinitcpio/archiso.conf /etc/mkinitcpio.conf.d
 cp /cinnamon-configs/.nanorc /home/$name/.nanorc
 
+echo "Cleaning up temporary files..."
 rm -rf /mkinitcpio
 rm -rf cinnamon-configs
 
-
+echo "AcreetionOS post-installation configuration completed successfully!"
