@@ -134,7 +134,7 @@ lightdm-gtk-greeter
 pipewire-pulse
 wireplumber
 pavucontrol
-#firefox
+firefox
 qt6-multimedia-ffmpeg
 qt6-multimedia-gstreamer
 qca-qt6
@@ -168,7 +168,7 @@ kpmcore
 electron31
 networkmanager
 # samba
-vlc
+#vlc
 #yay-bin
 #libpamac-aur
 #pamac-aur-git
@@ -243,4 +243,5 @@ linux-firmware-qcom
 linux-firmware-qlogic
 linux-firmware-whence
 linux-firmware-mellanox
-nano-syntax-highlighting
+#nano-syntax-highlighting
+#firefox
