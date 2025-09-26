@@ -23,7 +23,7 @@ To get started with AcreetionOS Linux, you can:
 2. Create a bootable USB drive using tools like [Etcher]("https://etcher.balena.io/#download-etcher"), [Rufus]("https://rufus.ie/en/"), or [Ventoy]("https://ventoy.net/en/index.html").
 3. Boot from the USB drive and follow the installation instructions
 
-*     Ventoy MUST use GRUB MODE*
+*     Ventoy MUST use GRUB MODE 2, if you use grub by its self will not boot correctly if at all.*
 ## Contributing
 
 We welcome contributions from the community! Please see our [Contributing Guide]("https://github.com/AcreetionOS/AcreetionOSDocumentationPlan/blob/main/documentation/contributor-guide.md") file for guidelines on how to get involved.
